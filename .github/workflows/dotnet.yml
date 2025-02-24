@@ -16,10 +16,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore code/T4-PR1_Practica1.sln
+      run: dotnet restore code/T4-PR1.sln
     - name: Build
-      run: dotnet build code/T4-PR1_Practica1.sln --no-restore
+      run: dotnet build code/T4-PR1.sln --no-restore
     - name: Test
-      run: dotnet test code/T4-PR1_Practica1.sln --no-build --verbosity normal
+      run: dotnet test code/T4-PR1.sln --no-build --verbosity normal
