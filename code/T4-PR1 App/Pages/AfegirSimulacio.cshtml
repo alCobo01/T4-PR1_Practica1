@@ -6,7 +6,7 @@
 }
 
 <h2>Afegir simulació</h2>
-<form>
+<form method="post">
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Tipus">Tipus de sistema</label>
 		<select asp-for="SistemaEnergia.Tipus" asp-items="Html.GetEnumSelectList<TipusSistema>()" class="form-control">
