@@ -1,0 +1,111 @@
+﻿@page
+@model T4_PR1_App.Pages.VeureIndicadorsModel
+@{
+	ViewData["Title"] = "Indicadors energètics";
+}
+
+<h2>Llistat d'indicadors energètics</h2>
+<a asp-page="AfegirIndicador" class="btn btn-primary">Afegir indicador energètic</a>
+
+@if (Model.HasData)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>PBEE Hidroelectr</th>
+                <th>PBEE Carbo</th>
+                <th>PBEE Gas Nat</th>
+                <th>PBEE Fuel Oil</th>
+                <th>PBEE Cicl Comb</th>
+                <th>PBEE Nuclear</th>
+                <th>CDEEBC Prod Bruta</th>
+                <th>CDEEBC Consum Aux</th>
+                <th>CDEEBC Prod Neta</th>
+                <th>CDEEBC Consum Bomb</th>
+                <th>CDEEBC Prod Disp</th>
+                <th>CDEEBC Tot Vendes Xarxa Central</th>
+                <th>CDEEBC Saldo Intercanvi Electr</th>
+                <th>CDEEBC Demanda Electr</th>
+                <th>CDEEBC Total EBC Mercat Regulat</th>
+                <th>CDEEBC Total EBC Mercat Lliure</th>
+                <th>FEE Industria</th>
+                <th>FEE Terciari</th>
+                <th>FEE Domestic</th>
+                <th>FEE Primari</th>
+                <th>FEE Energetic</th>
+                <th>FEEI Cons Obr Pub</th>
+                <th>FEEI Sider Foneria</th>
+                <th>FEEI Metalurgia</th>
+                <th>FEEI Indus Vidre</th>
+                <th>FEEI Ciments Cal Guix</th>
+                <th>FEEI Altres Mat Constr</th>
+                <th>FEEI Quim Petroquim</th>
+                <th>FEEI Constr Med Trans</th>
+                <th>FEEI Resta Transfor Metal</th>
+                <th>FEEI Alim Beguda Tabac</th>
+                <th>FEEI Textil Confec Cuir Calçat</th>
+                <th>FEEI Pasta Paper Cartro</th>
+                <th>FEEI Altres Indus</th>
+                <th>DGGN Punt Front Enagas</th>
+                <th>DGGN Distr Alim GNL</th>
+                <th>DGGN Consum GN Centr Term</th>
+                <th>CCAC Gasolina Auto</th>
+                <th>CCAC Gasoil A</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var indicador in Model.Indicadors)
+            {
+                <tr>
+                    <td>@indicador.Data</td>
+                    <td>@indicador.PBEE_Hidroelectr</td>
+                    <td>@indicador.PBEE_Carbo</td>
+                    <td>@indicador.PBEE_GasNat</td>
+                    <td>@indicador.PBEE_Fuel_Oil</td>
+                    <td>@indicador.PBEE_CiclComb</td>
+                    <td>@indicador.PBEE_Nuclear</td>
+                    <td>@indicador.CDEEBC_ProdBruta</td>
+                    <td>@indicador.CDEEBC_ConsumAux</td>
+                    <td>@indicador.CDEEBC_ProdNeta</td>
+                    <td>@indicador.CDEEBC_ConsumBomb</td>
+                    <td>@indicador.CDEEBC_ProdDisp</td>
+                    <td>@indicador.CDEEBC_TotVendesXarxaCentral</td>
+                    <td>@indicador.CDEEBC_SaldoIntercanviElectr</td>
+                    <td>@indicador.CDEEBC_DemandaElectr</td>
+                    <td>@indicador.CDEEBC_TotalEBCMercatRegulat</td>
+                    <td>@indicador.CDEEBC_TotalEBCMercatLliure</td>
+                    <td>@indicador.FEE_Industria</td>
+                    <td>@indicador.FEE_Terciari</td>
+                    <td>@indicador.FEE_Domestic</td>
+                    <td>@indicador.FEE_Primari</td>
+                    <td>@indicador.FEE_Energetic</td>
+                    <td>@indicador.FEEI_ConsObrPub</td>
+                    <td>@indicador.FEEI_SiderFoneria</td>
+                    <td>@indicador.FEEI_Metalurgia</td>
+                    <td>@indicador.FEEI_IndusVidre</td>
+                    <td>@indicador.FEEI_CimentsCalGuix</td>
+                    <td>@indicador.FEEI_AltresMatConstr</td>
+                    <td>@indicador.FEEI_QuimPetroquim</td>
+                    <td>@indicador.FEEI_ConstrMedTrans</td>
+                    <td>@indicador.FEEI_RestaTransforMetal</td>
+                    <td>@indicador.FEEI_AlimBegudaTabac</td>
+                    <td>@indicador.FEEI_TextilConfecCuirCalçat</td>
+                    <td>@indicador.FEEI_PastaPaperCartro</td>
+                    <td>@indicador.FEEI_AltresIndus</td>
+                    <td>@indicador.DGGN_PuntFrontEnagas</td>
+                    <td>@indicador.DGGN_DistrAlimGNL</td>
+                    <td>@indicador.DGGN_ConsumGNCentrTerm</td>
+                    <td>@indicador.CCAC_GasolinaAuto</td>
+                    <td>@indicador.CCAC_GasoilA</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+	<div class="alert alert-warning">
+		<p>Encara no existeix cap indicador energètic!</p>
+	</div>
+}
