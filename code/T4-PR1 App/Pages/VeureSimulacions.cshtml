@@ -1,37 +1,52 @@
-﻿@page
-@model T4_PR1_App.Pages.VeureSimulacionsModel
-@{
-	ViewData["Title"] = "Simulacions";
+﻿@page  
+@model T4_PR1_App.Pages.VeureSimulacionsModel  
+@{  
+    ViewData["Title"] = "Simulacions";  
+}  
+
+<h2>Llistat de simulacions</h2>  
+
+@if (Model.HasData)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipus de simulació</th>
+                <th>Data</th>
+                <th>Dada</th>
+                <th>Rati</th>
+                <th>Cost</th>
+                <th>Preu</th>
+                <th>Energia generada</th>
+                <th>Cost total</th>
+                <th>Preu total</th>
+                <th>Benefici</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var simulacio in Model.Simulacions)
+            {
+                <tr>
+                    <td>@simulacio.Tipus</td>
+                    <td>@simulacio.Data</td>
+                    <td>@simulacio.Dada</td>
+                    <td>@simulacio.Rati</td>
+                    <td>@simulacio.Cost</td>
+                    <td>@simulacio.Preu</td>
+                    <td>@simulacio.EnergiaGenerada</td>
+                    <td>@simulacio.CostTotal</td>
+                    <td>@simulacio.PreuTotal</td>
+                    <td>@simulacio.Benefici</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>Encara no has creat cap simulació!</p>
+    </div>
 }
 
-<h2>Llistat de simulacions</h2>
-
-<table class="table">
-	<thead>
-		<tr>Tipus de simulació</tr>
-		<tr>Data</tr>
-		<tr>Dada</tr>
-		<tr>Rati</tr>
-		<tr>Cost</tr>
-		<tr>Preu</tr>
-		<tr>Energia generada</tr>
-		<tr>Cost total</tr>
-		<tr>Preu total</tr>
-		<tr>Benefici</tr>
-	</thead>
-	<tbody>
-		@foreach (var simulacio in Model.Simulacions)
-		{
-			<tr>@simulacio.Tipus</tr>
-			<tr>@simulacio.Data</tr>
-			<tr>@simulacio.Dada</tr>
-			<tr>@simulacio.Rati</tr>
-			<tr>@simulacio.Cost</tr>
-			<tr>@simulacio.Preu</tr>
-			<tr>@simulacio.EnergiaGenerada</tr>
-			<tr>@simulacio.CostTotal</tr>
-			<tr>@simulacio.PreuTotal</tr>
-			<tr>@simulacio.Benefici</tr>
-		}
-	</tbody>
-</table>
+<a asp-page="AfegirSimulacio" class="btn btn-primary">Crear simulació</a>

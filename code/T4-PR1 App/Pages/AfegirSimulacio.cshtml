@@ -18,7 +18,7 @@
 	<div id="campSolar" class="campos-especificos" style="display: none;">
 		<div class="form-group">
 			<label asp-for="SistemaSolar.HoresSol">Hores de sol</label>
-			<input asp-for="SistemaSolar.HoresSol" class="form-control" />
+			<input asp-for="SistemaSolar.HoresSol" class="form-control" value=""/>
 			<span asp-validation-for="SistemaSolar.HoresSol" class="text-danger"></span>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 	<div id="campEolic" class="campos-especificos" style="display: none;">
 		<div class="form-group">
 			<label asp-for="SistemaEolic.VelocitatVent">Velocitat del vent</label>
-			<input asp-for="SistemaEolic.VelocitatVent" class="form-control" />
+			<input asp-for="SistemaEolic.VelocitatVent" class="form-control" value=""/>
 			<span asp-validation-for="SistemaEolic.VelocitatVent" class="text-danger"></span>
 		</div>
 	</div>
@@ -34,24 +34,24 @@
 	<div id="campHidroelectric" class="campos-especificos" style="display: none;">
 		<div class="form-group">
 			<label asp-for="SistemaHidroelectric.Cabal">Cabal</label>
-			<input asp-for="SistemaHidroelectric.Cabal" class="form-control" />
+			<input asp-for="SistemaHidroelectric.Cabal" class="form-control" value=""/>
 			<span asp-validation-for="SistemaHidroelectric.Cabal" class="text-danger"></span>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Rati">Rati del sistema</label>
-		<input asp-for="SistemaEnergia.Rati" class="form-control" />
+		<input asp-for="SistemaEnergia.Rati" class="form-control" value="" />
 		<span asp-validation-for="SistemaEnergia.Rati" class="text-danger"></span>
 	</div>
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Cost">Cost del sistema</label>
-		<input asp-for="SistemaEnergia.Cost" class="form-control" />
+		<input asp-for="SistemaEnergia.Cost" class="form-control" value=""/>
 		<span asp-validation-for="SistemaEnergia.Cost" class="text-danger"></span>
 	</div>
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Preu">Preu del sistema</label>
-		<input asp-for="SistemaEnergia.Preu" class="form-control" />
+		<input asp-for="SistemaEnergia.Preu" class="form-control" value=""/>
 		<span asp-validation-for="SistemaEnergia.Preu" class="text-danger"></span>
 	</div>
 	<button type="submit" class="btn btn-primary">Afegir simulació</button>

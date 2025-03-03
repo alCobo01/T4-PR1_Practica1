@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using T4PR1;
+using CsvHelper;
+using System.Globalization;
 
 namespace T4_PR1_App.Pages
 {
@@ -28,54 +30,77 @@ namespace T4_PR1_App.Pages
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid || SistemaEnergia == null) return Page();
-
             SistemaEnergia sistemaEspecific;
-            string simulationLine;
+            Simulacio simulacio;
 
+            ModelState.Clear();
             switch (SistemaEnergia.Tipus)
             {
                 case TipusSistema.Solar:
-                    SistemaSolar.Data = SistemaEnergia.Data;
+                    SistemaSolar.Data = DateTime.Now;
                     SistemaSolar.Rati = SistemaEnergia.Rati;
                     SistemaSolar.Cost = SistemaEnergia.Cost;
                     SistemaSolar.Preu = SistemaEnergia.Preu;
 
-                    if (!TryValidateModel(SistemaSolar))
-                    {
-                        return Page();
-                    }
+                    if (!TryValidateModel(SistemaSolar)) return Page();
 
-                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaSolar.Data};{SistemaSolar.HoresSol};{SistemaSolar.Rati};{SistemaSolar.Cost};{SistemaSolar.Preu};{SistemaSolar.CalcularEnergiaGenerada()};{SistemaSolar.CalcularCostTotal()};{SistemaSolar.CalcularPreuTotal()};{SistemaSolar.CalcularBenefici()}";
-                    sistemaEspecific = SistemaSolar;
+                    simulacio = new Simulacio
+                    {
+                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Data = SistemaSolar.Data,
+                        Dada = SistemaSolar.HoresSol,
+                        Rati = SistemaSolar.Rati,
+                        Cost = SistemaSolar.Cost,
+                        Preu = SistemaSolar.Preu,
+                        EnergiaGenerada = SistemaSolar.CalcularEnergiaGenerada(),
+                        CostTotal = SistemaSolar.CalcularCostTotal(),
+                        PreuTotal = SistemaSolar.CalcularPreuTotal(),
+                        Benefici = SistemaSolar.CalcularBenefici()
+                    };
                     break;
                 case TipusSistema.Eòlic:
-                    SistemaEolic.Data = SistemaEnergia.Data;
+                    SistemaEolic.Data = DateTime.Now;
                     SistemaEolic.Rati = SistemaEnergia.Rati;
                     SistemaEolic.Cost = SistemaEnergia.Cost;
                     SistemaEolic.Preu = SistemaEnergia.Preu;
 
-                    if (!TryValidateModel(SistemaEolic))
-                    {
-                        return Page();
-                    }
+                    if (!TryValidateModel(SistemaEolic)) return Page();
 
-                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaEolic.Data};{SistemaEolic.VelocitatVent};{SistemaEolic.Rati};{SistemaEolic.Cost};{SistemaEolic.Preu};{SistemaEolic.CalcularEnergiaGenerada()};{SistemaEolic.CalcularCostTotal()};{SistemaEolic.CalcularPreuTotal()};{SistemaEolic.CalcularBenefici()}";
-                    sistemaEspecific = SistemaEolic;
+                    simulacio = new Simulacio
+                    {
+                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Data = SistemaEolic.Data,
+                        Dada = SistemaEolic.VelocitatVent,
+                        Rati = SistemaEolic.Rati,
+                        Cost = SistemaEolic.Cost,
+                        Preu = SistemaEolic.Preu,
+                        EnergiaGenerada = SistemaEolic.CalcularEnergiaGenerada(),
+                        CostTotal = SistemaEolic.CalcularCostTotal(),
+                        PreuTotal = SistemaEolic.CalcularPreuTotal(),
+                        Benefici = SistemaEolic.CalcularBenefici()
+                    };
                     break;
                 case TipusSistema.Hidroelèctric:
-                    SistemaHidroelectric.Data = SistemaEnergia.Data;
+                    SistemaHidroelectric.Data = DateTime.Now;
                     SistemaHidroelectric.Rati = SistemaEnergia.Rati;
                     SistemaHidroelectric.Cost = SistemaEnergia.Cost;
                     SistemaHidroelectric.Preu = SistemaEnergia.Preu;
 
-                    if (!TryValidateModel(SistemaHidroelectric))
-                    {
-                        return Page();
-                    }
+                    if (!TryValidateModel(SistemaHidroelectric)) return Page();
 
-                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaHidroelectric.Data};{SistemaHidroelectric.Cabal};{SistemaHidroelectric.Rati};{SistemaHidroelectric.Cost};{SistemaHidroelectric.Preu};{SistemaHidroelectric.CalcularEnergiaGenerada()};{SistemaHidroelectric.CalcularCostTotal()};{SistemaHidroelectric.CalcularPreuTotal()};{SistemaHidroelectric.CalcularBenefici()}";
-                    sistemaEspecific = SistemaHidroelectric;
+                    simulacio = new Simulacio
+                    {
+                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Data = SistemaHidroelectric.Data,
+                        Dada = SistemaHidroelectric.Cabal,
+                        Rati = SistemaHidroelectric.Rati,
+                        Cost = SistemaHidroelectric.Cost,
+                        Preu = SistemaHidroelectric.Preu,
+                        EnergiaGenerada = SistemaHidroelectric.CalcularEnergiaGenerada(),
+                        CostTotal = SistemaHidroelectric.CalcularCostTotal(),
+                        PreuTotal = SistemaHidroelectric.CalcularPreuTotal(),
+                        Benefici = SistemaHidroelectric.CalcularBenefici()
+                    };
                     break;
                 default:
                     return Page();
@@ -84,15 +109,26 @@ namespace T4_PR1_App.Pages
             string filePath = "Files/Simulacions.csv";
             System.IO.Directory.CreateDirectory("Files");
 
-            if (!System.IO.File.Exists(filePath))
+            var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                string header = "Tipus,Data,Dada,Rati,Cost,Preu,EnergiaGenerada,CostTotal,PreuTotal,Benefici";
-                System.IO.File.WriteAllText(filePath, header + "\n");
-            }
+                HasHeaderRecord = !System.IO.File.Exists(filePath),
+                Delimiter = ";"
+            };
 
-            System.IO.File.AppendAllText(filePath, simulationLine + "\n");
+            using (var stream = new StreamWriter(filePath, append: true))
+            using (var csv = new CsvWriter(stream, config))
+            {
+                if (config.HasHeaderRecord)
+                {
+                    csv.WriteHeader<Simulacio>();
+                    csv.NextRecord();
+                }
+                csv.WriteRecord(simulacio);
+                csv.NextRecord();
+            }
 
             return RedirectToPage("VeureSimulacions");
         }
+
     }
 }

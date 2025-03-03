@@ -20,12 +20,20 @@ namespace T4_PR1_App.Pages
                 {
                     HasData = true;
                     using var reader = new StreamReader(filePath);
-                    using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-                    foreach (var simulacio in csv.GetRecords<Simulacio>())
+                    var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
                     {
-                        Simulacions.Add(simulacio);
-                    }
+                        Delimiter = ";"
+                    };
+
+                    using var csv = new CsvReader(reader, config);
+
+                    var records = csv.GetRecords<Simulacio>().ToList();
+                    Simulacions.AddRange(records);
+                }
+                else
+                {
+                    HasData = false;
                 }
             }
             catch (Exception)

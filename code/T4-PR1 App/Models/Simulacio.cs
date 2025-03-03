@@ -6,7 +6,7 @@ namespace T4PR1
 {
     public class Simulacio
     {
-        public TipusSistema Tipus { get; set; }
+        public string Tipus { get; set; }
         public DateTime Data { get; set; }
         public double Dada { get; set; }
         public double Rati { get; set; }
