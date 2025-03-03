@@ -1,4 +1,37 @@
 ﻿@page
 @model T4_PR1_App.Pages.VeureSimulacionsModel
 @{
+	ViewData["Title"] = "Simulacions";
 }
+
+<h2>Llistat de simulacions</h2>
+
+<table class="table">
+	<thead>
+		<tr>Tipus de simulació</tr>
+		<tr>Data</tr>
+		<tr>Dada</tr>
+		<tr>Rati</tr>
+		<tr>Cost</tr>
+		<tr>Preu</tr>
+		<tr>Energia generada</tr>
+		<tr>Cost total</tr>
+		<tr>Preu total</tr>
+		<tr>Benefici</tr>
+	</thead>
+	<tbody>
+		@foreach (var simulacio in Model.Simulacions)
+		{
+			<tr>@simulacio.Tipus</tr>
+			<tr>@simulacio.Data</tr>
+			<tr>@simulacio.Dada</tr>
+			<tr>@simulacio.Rati</tr>
+			<tr>@simulacio.Cost</tr>
+			<tr>@simulacio.Preu</tr>
+			<tr>@simulacio.EnergiaGenerada</tr>
+			<tr>@simulacio.CostTotal</tr>
+			<tr>@simulacio.PreuTotal</tr>
+			<tr>@simulacio.Benefici</tr>
+		}
+	</tbody>
+</table>
