@@ -46,7 +46,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus.Value,
                         Data = SistemaSolar.Data,
                         Dada = SistemaSolar.HoresSol,
                         Rati = SistemaSolar.Rati,
@@ -68,7 +68,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus.Value,
                         Data = SistemaEolic.Data,
                         Dada = SistemaEolic.VelocitatVent,
                         Rati = SistemaEolic.Rati,
@@ -90,7 +90,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus.Value,
                         Data = SistemaHidroelectric.Data,
                         Dada = SistemaHidroelectric.Cabal,
                         Rati = SistemaHidroelectric.Rati,
