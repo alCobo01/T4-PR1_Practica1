@@ -32,15 +32,15 @@ namespace T4PR1
 
         /// <summary> Calcula el cost total de l'energia generada pel sistema eòlic. </summary>
         /// <returns> Retorna el cost total del sistema</returns>
-        public double CalcularCostTotal() => CalcularEnergiaGenerada() * Cost;
+        public double CalcularCostTotal() => Math.Round(CalcularEnergiaGenerada() * Cost, 2);
 
         /// <summary> Calcula el preu total de l'energia generada pel sistema eòlic. </summary>
         /// <returns> Retorna el preu total del sistema</returns>
-        public double CalcularPreuTotal() => CalcularEnergiaGenerada() * Preu;
+        public double CalcularPreuTotal() => Math.Round(CalcularEnergiaGenerada() * Preu, 2);
 
         /// <summary> Calcula el benefici total de l'energia generada pel sistema eòlic. </summary>
         /// <returns> Retorna el benefici total del sistema</returns>
-        public double CalcularBenefici() => CalcularPreuTotal() - CalcularCostTotal();
+        public double CalcularBenefici() => Math.Round(CalcularPreuTotal() - CalcularCostTotal(), 2);
 
     }
 }
