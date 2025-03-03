@@ -1,4 +1,48 @@
 ﻿@page
 @model T4_PR1_App.Pages.VeureConsumAiguaModel
 @{
+	ViewData["Title"] = "Consum d'aigua";
 }
+
+<h2>Llistat de consums d'aigua</h2>
+
+@if (Model.HasData)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Any</th>
+                <th>Codi comarca</th>
+                <th>Comarca</th>
+                <th>Poblacio</th>
+                <th>Domèstic xarxa</th>
+                <th>Activitats econòmiques i fonts pròpies</th>
+                <th>Total</th>
+                <th>Consum domèstic per càpita</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consum in Model.Consums)
+            {
+                <tr>
+                    <td>@consum.Any</td>
+                    <td>@consum.CodiComarca</td>
+                    <td>@consum.Comarca</td>
+                    <td>@consum.Poblacio</td>
+                    <td>@consum.DomesticXarxa</td>
+                    <td>@consum.ActivitatsEconomiquesIFontsPropies</td>
+                    <td>@consum.Total</td>
+                    <td>@consum.ConsumDomesticPerCapita</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>Encara no existeix cap consum d'aigua!</p>
+    </div>
+}
+
+<a asp-page="AfegirSimulacio" class="btn btn-primary">Afegir consum d'aigua</a>

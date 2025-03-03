@@ -18,7 +18,7 @@ namespace T4_PR1_App.Models
         public string Poblacio { get; set; }
 
         [Name("Domèstic xarxa")]
-        public double DomanesticXarxa { get; set; }
+        public double DomesticXarxa { get; set; }
 
         [Name("Activitats econòmiques i fonts pròpies")]
         public double ActivitatsEconomiquesIFontsPropies { get; set; }
