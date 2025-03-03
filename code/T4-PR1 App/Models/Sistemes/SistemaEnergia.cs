@@ -25,7 +25,7 @@ namespace T4PR1
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = Missatges.TipusObligatori)]
-        public TipusSistema Tipus { get; set; }
+        public TipusSistema? Tipus { get; set; }
 
         //Métodes de la classe
         public virtual double CalcularEnergiaGenerada() => 0;

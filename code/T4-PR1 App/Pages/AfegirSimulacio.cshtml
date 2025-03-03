@@ -9,10 +9,36 @@
 <form method="post">
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Tipus">Tipus de sistema</label>
-		<select asp-for="SistemaEnergia.Tipus" asp-items="Html.GetEnumSelectList<TipusSistema>()" class="form-control">
-			<option value="">Selecciona un tipus de sistema</option>
+		<select id="tipusSelector" asp-for="SistemaEnergia.Tipus" asp-items="Html.GetEnumSelectList<TipusSistema>()" class="form-control">
+			<option value="" selected>Selecciona un tipus de sistema</option>
 		</select>
 	</div>
+
+	<!--Camps específics per cada tipus-->
+	<div id="campSolar" class="campos-especificos" style="display: none;">
+		<div class="form-group">
+			<label asp-for="SistemaSolar.HoresSol">Hores de sol</label>
+			<input asp-for="SistemaSolar.HoresSol" class="form-control" />
+			<span asp-validation-for="SistemaSolar.HoresSol" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div id="campEolic" class="campos-especificos" style="display: none;">
+		<div class="form-group">
+			<label asp-for="SistemaEolic.VelocitatVent">Velocitat del vent</label>
+			<input asp-for="SistemaEolic.VelocitatVent" class="form-control" />
+			<span asp-validation-for="SistemaEolic.VelocitatVent" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div id="campHidroelectric" class="campos-especificos" style="display: none;">
+		<div class="form-group">
+			<label asp-for="SistemaHidroelectric.Cabal">Cabal</label>
+			<input asp-for="SistemaHidroelectric.Cabal" class="form-control" />
+			<span asp-validation-for="SistemaHidroelectric.Cabal" class="text-danger"></span>
+		</div>
+	</div>
+
 	<div class="form-group">
 		<label asp-for="SistemaEnergia.Rati">Rati del sistema</label>
 		<input asp-for="SistemaEnergia.Rati" class="form-control" />
@@ -32,5 +58,6 @@
 </form>
 
 @section Scripts {
+	<script src="~/js/visibilitatPropietats.js"></script>
 	<partial name="_ValidationScriptsPartial" />
 }

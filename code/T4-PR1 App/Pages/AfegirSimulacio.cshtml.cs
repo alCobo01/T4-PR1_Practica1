@@ -7,43 +7,90 @@ namespace T4_PR1_App.Pages
     public class AfegirSimulacioModel : PageModel
     {
         [BindProperty]
-        public SistemaEnergia? SistemaEnergia { get; set; }
-        public SistemaSolar? SistemaSolar { get; set; }
-        public SistemaEolic? SistemaEolic { get; set; }
-        public SistemaHidroelectric? SistemaHidroelectric { get; set; }
+        public SistemaEnergia SistemaEnergia { get; set; }
 
+        [BindProperty]
+        public SistemaSolar SistemaSolar { get; set; }
+
+        [BindProperty]
+        public SistemaEolic SistemaEolic { get; set; }
+
+        [BindProperty]
+        public SistemaHidroelectric SistemaHidroelectric { get; set; }
 
         public void OnGet()
         {
+            SistemaSolar = new SistemaSolar();
+            SistemaEolic = new SistemaEolic();
+            SistemaHidroelectric = new SistemaHidroelectric();
+            SistemaEnergia = new SistemaEnergia();
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) return Page();
+            if (!ModelState.IsValid || SistemaEnergia == null) return Page();
 
+            SistemaEnergia sistemaEspecific;
             string simulationLine;
-            string filePath = "Files/Simulacions.csv";
-            System.IO.Directory.CreateDirectory("Files");
 
             switch (SistemaEnergia.Tipus)
             {
                 case TipusSistema.Solar:
-                    SistemaSolar = (SistemaSolar)SistemaEnergia;
-                    simulationLine = $"{SistemaSolar.Data};{SistemaSolar.HoresSol};{SistemaSolar.Rati};{SistemaSolar.Cost};{SistemaSolar.Preu};{SistemaSolar.CalcularEnergiaGenerada()};{SistemaSolar.CalcularCostTotal()};{SistemaSolar.CalcularPreuTotal()};{SistemaSolar.CalcularBenefici()}";
+                    SistemaSolar.Data = SistemaEnergia.Data;
+                    SistemaSolar.Rati = SistemaEnergia.Rati;
+                    SistemaSolar.Cost = SistemaEnergia.Cost;
+                    SistemaSolar.Preu = SistemaEnergia.Preu;
+
+                    if (!TryValidateModel(SistemaSolar))
+                    {
+                        return Page();
+                    }
+
+                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaSolar.Data};{SistemaSolar.HoresSol};{SistemaSolar.Rati};{SistemaSolar.Cost};{SistemaSolar.Preu};{SistemaSolar.CalcularEnergiaGenerada()};{SistemaSolar.CalcularCostTotal()};{SistemaSolar.CalcularPreuTotal()};{SistemaSolar.CalcularBenefici()}";
+                    sistemaEspecific = SistemaSolar;
                     break;
                 case TipusSistema.Eòlic:
-                    SistemaEolic = (SistemaEolic)SistemaEnergia;
-                    simulationLine = $"{SistemaEolic.Data};{SistemaEolic.VelocitatVent};{SistemaEolic.Rati};{SistemaEolic.Cost};{SistemaEolic.Preu};{SistemaEolic.CalcularEnergiaGenerada()};{SistemaEolic.CalcularCostTotal()};{SistemaEolic.CalcularPreuTotal()};{SistemaEolic.CalcularBenefici()}";
+                    SistemaEolic.Data = SistemaEnergia.Data;
+                    SistemaEolic.Rati = SistemaEnergia.Rati;
+                    SistemaEolic.Cost = SistemaEnergia.Cost;
+                    SistemaEolic.Preu = SistemaEnergia.Preu;
+
+                    if (!TryValidateModel(SistemaEolic))
+                    {
+                        return Page();
+                    }
+
+                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaEolic.Data};{SistemaEolic.VelocitatVent};{SistemaEolic.Rati};{SistemaEolic.Cost};{SistemaEolic.Preu};{SistemaEolic.CalcularEnergiaGenerada()};{SistemaEolic.CalcularCostTotal()};{SistemaEolic.CalcularPreuTotal()};{SistemaEolic.CalcularBenefici()}";
+                    sistemaEspecific = SistemaEolic;
                     break;
                 case TipusSistema.Hidroelèctric:
-                    simulationLine = $"{SistemaEnergia.Data};{SistemaHidroelectric.Cabal};{SistemaEnergia.Rati};{SistemaEnergia.Cost};{SistemaEnergia.Preu};{SistemaHidroelectric.CalcularEnergiaGenerada()};{SistemaHidroelectric.CalcularCostTotal()};{SistemaHidroelectric.CalcularPreuTotal()};{SistemaHidroelectric.CalcularBenefici()}";
+                    SistemaHidroelectric.Data = SistemaEnergia.Data;
+                    SistemaHidroelectric.Rati = SistemaEnergia.Rati;
+                    SistemaHidroelectric.Cost = SistemaEnergia.Cost;
+                    SistemaHidroelectric.Preu = SistemaEnergia.Preu;
+
+                    if (!TryValidateModel(SistemaHidroelectric))
+                    {
+                        return Page();
+                    }
+
+                    simulationLine = $"{SistemaEnergia.Tipus};{SistemaHidroelectric.Data};{SistemaHidroelectric.Cabal};{SistemaHidroelectric.Rati};{SistemaHidroelectric.Cost};{SistemaHidroelectric.Preu};{SistemaHidroelectric.CalcularEnergiaGenerada()};{SistemaHidroelectric.CalcularCostTotal()};{SistemaHidroelectric.CalcularPreuTotal()};{SistemaHidroelectric.CalcularBenefici()}";
+                    sistemaEspecific = SistemaHidroelectric;
                     break;
                 default:
                     return Page();
             }
 
-            System.IO.File.AppendAllText(filePath, simulationLine + "\n");
+            string filePath = "Files/Simulacions.csv";
+            System.IO.Directory.CreateDirectory("Files");
 
+            if (!System.IO.File.Exists(filePath))
+            {
+                string header = "Tipus,Data,Dada,Rati,Cost,Preu,EnergiaGenerada,CostTotal,PreuTotal,Benefici";
+                System.IO.File.WriteAllText(filePath, header + "\n");
+            }
+
+            System.IO.File.AppendAllText(filePath, simulationLine + "\n");
 
             return RedirectToPage("VeureSimulacions");
         }
