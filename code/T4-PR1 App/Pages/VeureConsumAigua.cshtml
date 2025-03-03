@@ -6,6 +6,8 @@
 
 <h2>Llistat de consums d'aigua</h2>
 
+<a asp-page="AfegirConsumAigua" class="btn btn-primary">Afegir consum d'aigua</a>
+
 @if (Model.HasData)
 {
     <table class="table">
@@ -44,5 +46,3 @@ else
         <p>Encara no existeix cap consum d'aigua!</p>
     </div>
 }
-
-<a asp-page="AfegirSimulacio" class="btn btn-primary">Afegir consum d'aigua</a>

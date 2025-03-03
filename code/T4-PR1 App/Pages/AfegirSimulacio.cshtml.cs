@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+ï»¿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using T4PR1;
 using CsvHelper;
@@ -58,7 +58,7 @@ namespace T4_PR1_App.Pages
                         Benefici = SistemaSolar.CalcularBenefici()
                     };
                     break;
-                case TipusSistema.Eòlic:
+                case TipusSistema.EÃ²lic:
                     SistemaEolic.Data = DateTime.Now;
                     SistemaEolic.Rati = SistemaEnergia.Rati;
                     SistemaEolic.Cost = SistemaEnergia.Cost;
@@ -80,7 +80,7 @@ namespace T4_PR1_App.Pages
                         Benefici = SistemaEolic.CalcularBenefici()
                     };
                     break;
-                case TipusSistema.Hidroelèctric:
+                case TipusSistema.HidroelÃ¨ctric:
                     SistemaHidroelectric.Data = DateTime.Now;
                     SistemaHidroelectric.Rati = SistemaEnergia.Rati;
                     SistemaHidroelectric.Cost = SistemaEnergia.Cost;
