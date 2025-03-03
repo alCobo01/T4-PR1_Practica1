@@ -4,9 +4,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      LANG: "C.UTF-8"
+      LC_ALL: "C.UTF-8"
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
