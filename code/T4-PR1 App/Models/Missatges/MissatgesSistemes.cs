@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace T4PR1
+namespace T4_PR1_App.Models.Missatges
 {
-    public static class Missatges
+    public static class MissatgesSistemes
     {
         public const string EolicMinim = "La velocitat del vent ha de ser superior a 5 m/s! ",
             HidroelectricMinim = "El cabal ha de ser major a 20 m^3! ",

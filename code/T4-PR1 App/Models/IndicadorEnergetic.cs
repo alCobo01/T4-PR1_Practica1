@@ -1,9 +1,12 @@
 ﻿using CsvHelper.Configuration.Attributes;
+using System.ComponentModel.DataAnnotations;
+using T4_PR1_App.Models.Missatges;
 
 namespace T4_PR1_App.Models
 {
     public class IndicadorEnergetic
     {
+        [Required(ErrorMessage = MissatgesIndicador.RequiredData)]
         public DateTime Data { get; set; }
         public double PBEE_Hidroelectr { get; set; }
         public double PBEE_Carbo { get; set; }
@@ -16,11 +19,17 @@ namespace T4_PR1_App.Models
         public double PBEE_Nuclear { get; set; }
         public double CDEEBC_ProdBruta { get; set; }
         public double CDEEBC_ConsumAux { get; set; }
+
+        [Required(ErrorMessage = MissatgesIndicador.RequiredCDEEBC_ProdNeta)]
         public double CDEEBC_ProdNeta { get; set; }
         public double CDEEBC_ConsumBomb { get; set; }
+
+        [Required(ErrorMessage = MissatgesIndicador.RequiredCDEEBC_ProdDisp)]
         public double CDEEBC_ProdDisp { get; set; }
         public double CDEEBC_TotVendesXarxaCentral { get; set; }
         public double CDEEBC_SaldoIntercanviElectr { get; set; }
+
+        [Required(ErrorMessage = MissatgesIndicador.RequiredCDEEBC_DemandaElectr)]
         public double CDEEBC_DemandaElectr { get; set; }
         public string? CDEEBC_TotalEBCMercatRegulat { get; set; }
         public string? CDEEBC_TotalEBCMercatLliure { get; set; }
@@ -45,6 +54,8 @@ namespace T4_PR1_App.Models
         public double DGGN_PuntFrontEnagas { get; set; }
         public double DGGN_DistrAlimGNL { get; set; }
         public double DGGN_ConsumGNCentrTerm { get; set; }
+
+        [Required(ErrorMessage = MissatgesIndicador.RequiredCCAC_GasolinaAuto)]
         public double CCAC_GasolinaAuto { get; set; }
         public double CCAC_GasoilA { get; set; }
     }

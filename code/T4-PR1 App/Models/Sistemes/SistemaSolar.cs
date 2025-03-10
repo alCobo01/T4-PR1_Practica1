@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using T4_PR1_App.Models.Missatges;
 
 namespace T4PR1
 {
@@ -12,14 +13,14 @@ namespace T4PR1
         //Propietats
         private double _horesSol;
 
-        [Required(ErrorMessage = Missatges.SolarObligatori)]
-        [Range(_minim, double.MaxValue, ErrorMessage = Missatges.SolarMinim)]
+        [Required(ErrorMessage = MissatgesSistemes.SolarObligatori)]
+        [Range(_minim, double.MaxValue, ErrorMessage = MissatgesSistemes.SolarMinim)]
         public double HoresSol
         {
             get { return _horesSol; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(Missatges.SolarMinim);
+                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.SolarMinim);
                 _horesSol = value;
             }
         }

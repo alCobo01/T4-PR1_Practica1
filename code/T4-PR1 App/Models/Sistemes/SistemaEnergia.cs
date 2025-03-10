@@ -1,6 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection.Emit;
+﻿using System.ComponentModel.DataAnnotations;
+using T4_PR1_App.Models.Missatges;
 
 namespace T4PR1
 {
@@ -13,18 +12,18 @@ namespace T4PR1
 
     public class SistemaEnergia : ICalculSimulacio
     {
-        [Required(ErrorMessage = Missatges.RatiObligatori)]
+        [Required(ErrorMessage = MissatgesSistemes.RatiObligatori)]
         public float Rati { get; set; }
 
-        [Required(ErrorMessage = Missatges.CostObligatori)]
+        [Required(ErrorMessage = MissatgesSistemes.CostObligatori)]
         public float Cost { get; set; }
 
-        [Required(ErrorMessage = Missatges.PreuObligatori)]
+        [Required(ErrorMessage = MissatgesSistemes.PreuObligatori)]
         public float Preu { get; set; }
 
         public DateTime Data { get; set; }
 
-        [Required(ErrorMessage = Missatges.TipusObligatori)]
+        [Required(ErrorMessage = MissatgesSistemes.TipusObligatori)]
         public TipusSistema? Tipus { get; set; }
 
         //Métodes de la classe
