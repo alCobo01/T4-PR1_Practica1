@@ -24,12 +24,15 @@ namespace T4_PR1_App.Pages
                     
                     using var reader = new StreamReader(filePathCSV);
                     using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
                     var records = csv.GetRecords<IndicadorEnergetic>().ToList();
                     Indicadors.AddRange(records);
                 }
                 else { HasData = false; }
             }
-            catch (Exception) { HasData = false; }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                HasData = false; }
 
             // Llegir el fitxer CSV
             string filePathJSON = "Files/indicadors_energetics_cat.json";
@@ -43,7 +46,6 @@ namespace T4_PR1_App.Pages
                     var records = System.Text.Json.JsonSerializer.Deserialize<List<IndicadorEnergetic>>(jsonFromFile);
                     Indicadors.AddRange(records);
                 }
-                else { HasData = false; }
             }
             catch (Exception) { HasData = false; }
         }

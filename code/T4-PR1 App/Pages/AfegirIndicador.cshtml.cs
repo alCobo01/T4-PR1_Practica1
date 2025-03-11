@@ -32,6 +32,25 @@ namespace T4_PR1_App.Pages
                     Indicadors = new List<IndicadorEnergetic>();
                 }
 
+                //Per no inserir valor nulls al JSON, introdueixo valors per defecte als camps amb valor null depenent del tipus de dada que són
+                foreach (var propietat in typeof(IndicadorEnergetic).GetProperties())
+                {
+                    var valorActual = propietat.GetValue(Indicador);
+                    if (valorActual == null)
+                    {
+                        if (propietat.PropertyType == typeof(string))
+                            propietat.SetValue(Indicador, "0.0%");
+                        else if (propietat.PropertyType == typeof(int))
+                            propietat.SetValue(Indicador, 0);
+                        else if (propietat.PropertyType == typeof(double))
+                            propietat.SetValue(Indicador, 0.0);
+                        else if (propietat.PropertyType == typeof(double?))
+                            propietat.SetValue(Indicador, 0.0);
+                        else if (propietat.PropertyType == typeof(DateTime))
+                            propietat.SetValue(Indicador, DateTime.Now);
+                    }
+                }
+
                 Indicadors.Add(Indicador);
                 var jsonResult = System.Text.Json.JsonSerializer.Serialize(Indicadors);
                 System.IO.File.WriteAllText(filePath, jsonResult);
