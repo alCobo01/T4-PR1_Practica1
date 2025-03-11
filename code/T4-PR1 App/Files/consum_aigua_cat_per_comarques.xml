@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Consums>
+  <Consum>
+    <Any>2011</Any>
+    <CodiComarca>131</CodiComarca>
+    <Comarca>dsad</Comarca>
+    <Poblacio>adssa</Poblacio>
+    <DomesticXarxa>2131</DomesticXarxa>
+    <ActivitatsEconomiquesIFontsPropies>1231</ActivitatsEconomiquesIFontsPropies>
+    <Total>21312</Total>
+    <ConsumDomesticPerCapita>123</ConsumDomesticPerCapita>
+  </Consum>
+  <Consum>
+    <Any>213312</Any>
+    <CodiComarca>asdd</CodiComarca>
+    <Comarca>21312</Comarca>
+    <Poblacio>213</Poblacio>
+    <DomesticXarxa>213123</DomesticXarxa>
+    <ActivitatsEconomiquesIFontsPropies>879</ActivitatsEconomiquesIFontsPropies>
+    <Total>1321312</Total>
+    <ConsumDomesticPerCapita>7568</ConsumDomesticPerCapita>
+  </Consum>
+</Consums>

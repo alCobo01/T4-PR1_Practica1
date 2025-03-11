@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using T4_PR1_App.Models.Missatges;
 
 namespace T4PR1
 {
@@ -12,14 +13,14 @@ namespace T4PR1
         //Propietats
         private double _cabal;
 
-        [Required(ErrorMessage = Missatges.HidroelectricObligatori)]
-        [Range(_minim, double.MaxValue, ErrorMessage = Missatges.HidroelectricMinim)]
+        [Required(ErrorMessage = MissatgesSistemes.HidroelectricObligatori)]
+        [Range(_minim, double.MaxValue, ErrorMessage = MissatgesSistemes.HidroelectricMinim)]
         public double Cabal
         {
             get { return _cabal; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(Missatges.HidroelectricMinim);
+                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.HidroelectricMinim);
                 _cabal = value;
             }
         }

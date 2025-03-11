@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using T4_PR1_App.Models.Missatges;
 
 namespace T4PR1
 {
@@ -12,14 +13,14 @@ namespace T4PR1
         //Propietats
         private double _velocitatVent;
 
-        [Required(ErrorMessage = Missatges.EolicObligatori)]
-        [Range(_minim, double.MaxValue, ErrorMessage = Missatges.EolicMinim)]
+        [Required(ErrorMessage = MissatgesSistemes.EolicObligatori)]
+        [Range(_minim, double.MaxValue, ErrorMessage = MissatgesSistemes.EolicMinim)]
         public double VelocitatVent
         {
             get { return _velocitatVent; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(Missatges.EolicMinim);
+                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.EolicMinim);
                 _velocitatVent = value;
             }
         }

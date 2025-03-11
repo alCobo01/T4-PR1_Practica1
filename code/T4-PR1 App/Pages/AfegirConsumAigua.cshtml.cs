@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.IO;
@@ -58,7 +58,7 @@ namespace T4_PR1_App.Pages
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error al guardar el archivo XML: " + ex.Message);
+                ModelState.AddModelError(string.Empty, "Error al guardar l'arxiu XML: " + ex.Message);
                 return Page();
             }
         }

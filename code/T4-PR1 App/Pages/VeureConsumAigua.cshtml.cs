@@ -1,4 +1,4 @@
-using CsvHelper;
+﻿using CsvHelper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
 using System.Xml;
@@ -15,14 +15,14 @@ namespace T4_PR1_App.Pages
         {
             //Llegir dades del fitxer CSV
             Consums = new List<ConsumAigua>();
-            string filePath = "Files/consum_aigua_cat_per_comarques.csv";
+            string filePathCSV = "Files/consum_aigua_cat_per_comarques.csv";
 
             try
             {
-                if (System.IO.File.Exists(filePath))
+                if (System.IO.File.Exists(filePathCSV))
                 {
                     HasData = true;
-                    using var reader = new StreamReader(filePath);
+                    using var reader = new StreamReader(filePathCSV);
 
                     using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
