@@ -5,19 +5,23 @@
 }
 
 <h2>Llistat de consums d'aigua</h2>
-<a asp-page="AfegirConsumAigua" class="btn btn-primary">Afegir consum d'aigua</a>
+<div>
+    <a asp-page="AfegirConsumAigua" class="btn btn-primary" style="margin-bottom: 20px">Afegir consum d'aigua</a>
+</div>
 
 @if (Model.HasData)
 {
-    <!-- Selector per canviar entre taules i consultes LINQ -->
-    <label for="tableSelector">Selecciona una taula:</label>
-    <select id="tableSelector">
-        <option value="tots">Tots els consums</option>
-        <option value="mesConsum">Municipis més consumidors</option>
-        <option value="mitjaComarca">Consum mitjà per comarca</option>
-        <option value="sospitosos">Consums sospitosos</option>
-        <option value="creixent">Municipis amb tendència creixent</option>
-    </select>
+    <div style="margin-bottom: 20px;">
+        <!-- Selector per canviar entre taules i consultes LINQ -->
+        <label for="tableSelector">Selecciona una taula:</label>
+        <select id="tableSelector">
+            <option value="tots">Tots els consums</option>
+            <option value="mesConsum">Municipis més consumidors</option>
+            <option value="mitjaComarca">Consum mitjà per comarca</option>
+            <option value="sospitosos">Consums sospitosos</option>
+            <option value="creixent">Municipis amb tendència creixent</option>
+        </select>
+    </div>
 
 	<!-- Taula de tots els consums -->
     <table class="table" id="table-tots">

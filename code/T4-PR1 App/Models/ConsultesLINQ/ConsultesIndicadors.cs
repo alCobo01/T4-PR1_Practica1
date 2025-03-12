@@ -33,7 +33,7 @@
         public static List<IndicadorEnergetic> GetDemandaIproduccioGran(List<IndicadorEnergetic> indicadors)
         {
             return indicadors
-                .Where(i => i.CDEEBC_DemandaElectr > 4000 && i.CDEEBC_ProdDisp < 300)
+                .Where(i => i.CDEEBC_DemandaElectr > 4000 && i.CDEEBC_ProdDisp > 300)
                 .ToList();
         } 
     }

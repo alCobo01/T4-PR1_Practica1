@@ -5,7 +5,9 @@
 }  
 
 <h2>Llistat de simulacions</h2>  
-
+<div>
+    <a asp-page="AfegirSimulacio" class="btn btn-primary" style="margin-bottom: 20px">Afegir simulació</a>
+</div>
 
 @if (Model.HasData)
 {
@@ -51,4 +53,3 @@ else
     </div>
 }
 
-<a asp-page="AfegirSimulacio" class="btn btn-primary">Crear simulació</a>

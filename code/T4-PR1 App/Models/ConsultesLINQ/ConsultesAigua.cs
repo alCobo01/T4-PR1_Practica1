@@ -33,40 +33,19 @@ namespace T4_PR1_App.Models.ConsultesLINQ
                 .ToList();
         }
 
-        //tengo que cambiar esta abominación. no sé que hace ni como lo hace pero funciona
         public static List<string> GetMunicipisAmbTendenciaCreixent(List<ConsumAigua> consums)
         {
             var anyActual = DateTime.Now.Year;
             var anyInici = anyActual - 5;
-              
+
             return consums
-                .Where(c => c.Any >= anyInici && c.Any <= anyActual)
+                .Where(c => c.Any >= anyInici)
                 .GroupBy(c => c.Poblacio)
-                .Where(g => {
-                    // Ordenamos los datos por año
-                    var consumsOrdenats = g.OrderBy(c => c.Any).ToList();
-
-                    // Verificamos que haya datos para al menos 2 años distintos para poder detectar tendencia
-                    if (consumsOrdenats.Select(c => c.Any).Distinct().Count() < 2)
-                        return false;
-
-                    // Comprobamos si la tendencia es creciente
-                    bool tendenciaCreciente = true;
-                    for (int i = 1; i < consumsOrdenats.Count; i++)
-                    {
-                        if (consumsOrdenats[i].Total <= consumsOrdenats[i - 1].Total)
-                        {
-                            tendenciaCreciente = false;
-                            break;
-                        }
-                    }
-
-                    return tendenciaCreciente;
-                })
+                .Where(g => g.OrderBy(c => c.Any)
+                             .Select((c, i) => new { c.Any, Index = i })
+                             .All(x => x.Index == 0 || x.Any > g.ElementAt(x.Index - 1).Any))
                 .Select(g => g.Key)
                 .ToList();
         }
-
-
     }
 }
