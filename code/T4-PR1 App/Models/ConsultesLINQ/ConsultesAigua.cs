@@ -4,6 +4,11 @@ namespace T4_PR1_App.Models.ConsultesLINQ
 {
     public static class ConsultesAigua
     {
+        /// <summary>
+        /// Retorna els deu municipis amb el major consum d'aigua.
+        /// </summary>
+        /// <param name="consums">Llista de consums d'aigua.</param>
+        /// <returns>Llista amb els 10 municipis amb el consum més alt.</returns>
         public static List<ConsumAigua> GetDeuMunicipisMesConsumidors(List<ConsumAigua> consums)
         {
             return consums
@@ -12,6 +17,11 @@ namespace T4_PR1_App.Models.ConsultesLINQ
                 .ToList();
         }
 
+        /// <summary>
+        /// Calcula el consum mitjà d'aigua per comarca.
+        /// </summary>
+        /// <param name="consums">Llista de consums d'aigua.</param>
+        /// <returns>Llista amb el consum mitjà per comarca, ordenada pel codi de comarca.</returns>
         public static List<ConsumAigua> GetConsumMitjaPerComarca(List<ConsumAigua> consums)
         {
             return consums
@@ -25,7 +35,12 @@ namespace T4_PR1_App.Models.ConsultesLINQ
                 .OrderBy(c => c.CodiComarca)
                 .ToList();
         }
-         
+
+        /// <summary>
+        /// Filtra i retorna els consums d'aigua considerats sospitosos.
+        /// </summary>
+        /// <param name="consums">Llista de consums d'aigua.</param>
+        /// <returns>Llista amb els consums que superen el llindar considerat sospitós.</returns>
         public static List<ConsumAigua> GetConsumsSospitosos(List<ConsumAigua> consums)
         {
             return consums
@@ -33,6 +48,11 @@ namespace T4_PR1_App.Models.ConsultesLINQ
                 .ToList();
         }
 
+        /// <summary>
+        /// Retorna els municipis amb tendència creixent en el consum d'aigua durant els últims cinc anys.
+        /// </summary>
+        /// <param name="consums">Llista de consums d'aigua.</param>
+        /// <returns>Llista de noms de municipis que han mostrat una millora anual en el consum d'aigua.</returns>
         public static List<string> GetMunicipisAmbTendenciaCreixent(List<ConsumAigua> consums)
         {
             var anyActual = DateTime.Now.Year;
