@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using T4_PR1_App.Models;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using CsvHelper;
 using System.Globalization;
+using T4_PR1_App.Models.ConsultesLINQ;
 
 namespace T4_PR1_App.Pages
 {
@@ -10,6 +9,11 @@ namespace T4_PR1_App.Pages
     {
         public bool HasData { get; set; }
         public List<IndicadorEnergetic> Indicadors { get; set; }
+        public List<IndicadorEnergetic> ProduccionsNetesGrans { get; set; }
+        public List<IndicadorEnergetic> ConsumsGasolinaGrans { get; set; }
+        public List<IndicadorEnergetic> ProduccionsMitjaPerAny { get; set; }
+        public List<IndicadorEnergetic> DemandesIproduccionsGrans { get; set; }
+
         public void OnGet()
         {
             Indicadors = new List<IndicadorEnergetic>();
@@ -48,7 +52,16 @@ namespace T4_PR1_App.Pages
                 }
             }
             catch (Exception) { HasData = false; }
+
+            // Consultes LINQ
+            ProduccionsNetesGrans = ConsultesIndicadors.GetProdNetaGran(Indicadors);
+            ConsumsGasolinaGrans = ConsultesIndicadors.GetConsumGasolinaGran(Indicadors);
+            ProduccionsMitjaPerAny = ConsultesIndicadors.GetProduccioMitjaPerAny(Indicadors);
+            DemandesIproduccionsGrans = ConsultesIndicadors.GetDemandaIproduccioGran(Indicadors);
+
         }
+
+
 
 
     }

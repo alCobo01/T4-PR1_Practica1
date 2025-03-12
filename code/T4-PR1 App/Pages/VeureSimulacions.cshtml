@@ -6,8 +6,10 @@
 
 <h2>Llistat de simulacions</h2>  
 
+
 @if (Model.HasData)
 {
+    <p>S'han fet @Model.Simulacions.Count simulacions! </p>
     <table class="table">
         <thead>
             <tr>
