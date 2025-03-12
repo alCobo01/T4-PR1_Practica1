@@ -20,7 +20,7 @@ namespace T4_PR1_App.Pages
         {
             //Llegir dades del fitxer CSV
             Consums = new List<ConsumAigua>();
-            string filePathCSV = "Files/consum_aigua_cat_per_comarques.csv";
+            string filePathCSV = Path.GetFullPath(@"Files/consum_aigua_cat_per_comarques.csv");
 
             try
             {
@@ -40,7 +40,7 @@ namespace T4_PR1_App.Pages
 
 
             //Llegir dades del fitxer XML
-            string filePathXML = "Files/consum_aigua_cat_per_comarques.xml";
+            string filePathXML = Path.GetFullPath(@"Files/consum_aigua_cat_per_comarques.xml");
             if (System.IO.File.Exists(filePathXML))
             {
                 HasData = true;

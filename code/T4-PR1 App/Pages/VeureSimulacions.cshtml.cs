@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using T4PR1;
 using CsvHelper;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace T4_PR1_App.Pages
         public void OnGet()
         {
             Simulacions = new List<Simulacio>();
-            string filePath = "Files/Simulacions.csv";
+            string filePath = Path.GetFullPath(@"Files/Simulacions.csv");
 
             try
             {

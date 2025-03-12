@@ -105,7 +105,7 @@ namespace T4_PR1_App.Pages
                     return Page();
             }
 
-            string filePath = "Files/Simulacions.csv";
+            string filePath = Path.GetFullPath(@"Files/Simulacions.csv");
             Directory.CreateDirectory("Files");
 
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
