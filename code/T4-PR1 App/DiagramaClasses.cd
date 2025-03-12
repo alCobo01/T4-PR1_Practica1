@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="T4PR1.SistemaEnergia" Collapsed="true">
+    <Position X="6" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEIAQAAAAAAAAAAAAAABAAAAAAABgQAgAAAAABAAA=</HashCode>
+      <FileName>Models\Sistemes\SistemaEnergia.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4PR1.SistemaEolic" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgEAAIAAAAAAAAAAAAAAAAAAgABIAA=</HashCode>
+      <FileName>Models\Sistemes\SistemaEolic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4PR1.SistemaHidroelectric" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAgAAACCAAAAAAAAAAAAAAgABAAA=</HashCode>
+      <FileName>Models\Sistemes\SistemaHidroelectric.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4PR1.SistemaSolar" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAAAFAgABAAA=</HashCode>
+      <FileName>Models\Sistemes\SistemaSolar.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4PR1.Simulacio" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAABAAgBAAAAAAABgAAgAAAAAABEA=</HashCode>
+      <FileName>Models\Simulacio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.IndicadorEnergetic" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIIhAQQIZAEgDEQAAQAIAAsICAIIQBAhECIAgAAAAwE=</HashCode>
+      <FileName>Models\IndicadorEnergetic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.ConsumAigua" Collapsed="true">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAgAAAABBAAAAAAAAAAAAAAAAAAQAAQAAAAEAQAAAA=</HashCode>
+      <FileName>Models\ConsumAigua.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.Missatges.MissatgesAigua" Collapsed="true">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAQAAgAAAAAAAAAAQABgAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Models\Missatges\MissatgesAigua.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.Missatges.MissatgesIndicador" Collapsed="true">
+    <Position X="1.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Missatges\MissatgesIndicador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.Missatges.MissatgesSistemes" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAgAAAaEAQAAAAAAABAAAAAAAAABAAAAAEA=</HashCode>
+      <FileName>Models\Missatges\MissatgesSistemes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.ConsultesLINQ.ConsultesAigua" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAhEAAAAAAAAA=</HashCode>
+      <FileName>Models\ConsultesLINQ\ConsultesAigua.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4_PR1_App.Models.ConsultesLINQ.ConsultesIndicadors" Collapsed="true">
+    <Position X="1.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAABAAAAAAAAAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\ConsultesLINQ\ConsultesIndicadors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="T4PR1.ICalculSimulacio" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAA=</HashCode>
+      <FileName>Models\ICalculSimulacio.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="T4PR1.TipusSistema" Collapsed="true">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Sistemes\SistemaEnergia.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
