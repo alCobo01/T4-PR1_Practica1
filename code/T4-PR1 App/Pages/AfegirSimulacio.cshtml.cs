@@ -30,7 +30,6 @@ namespace T4_PR1_App.Pages
 
         public IActionResult OnPost()
         {
-            SistemaEnergia sistemaEspecific;
             Simulacio simulacio;
 
             ModelState.Clear();
