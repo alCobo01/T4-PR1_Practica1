@@ -1,7 +1,7 @@
 ﻿function changeTable() {
     // Obtenir el valor seleccionat
-    var selector = document.getElementById("tableTotsSelector");
-    var value = selector.value;
+    let selector = document.getElementById("tableTotsSelector");
+    let value = selector.value;
 
     // Ocultar totes les taules
     document.getElementById("pbeeTable").style.display = "none";

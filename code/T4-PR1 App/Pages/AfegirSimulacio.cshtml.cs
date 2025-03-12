@@ -45,7 +45,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus,
                         Data = SistemaSolar.Data,
                         Dada = SistemaSolar.HoresSol,
                         Rati = SistemaSolar.Rati,
@@ -67,7 +67,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus,
                         Data = SistemaEolic.Data,
                         Dada = SistemaEolic.VelocitatVent,
                         Rati = SistemaEolic.Rati,
@@ -89,7 +89,7 @@ namespace T4_PR1_App.Pages
 
                     simulacio = new Simulacio
                     {
-                        Tipus = SistemaEnergia.Tipus.ToString(),
+                        Tipus = SistemaEnergia.Tipus,
                         Data = SistemaHidroelectric.Data,
                         Dada = SistemaHidroelectric.Cabal,
                         Rati = SistemaHidroelectric.Rati,
@@ -106,7 +106,7 @@ namespace T4_PR1_App.Pages
             }
 
             string filePath = "Files/Simulacions.csv";
-            System.IO.Directory.CreateDirectory("Files");
+            Directory.CreateDirectory("Files");
 
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
             {

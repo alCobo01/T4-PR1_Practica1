@@ -10,7 +10,7 @@ namespace T4_PR1_App.Pages
         [BindProperty]
         public IndicadorEnergetic Indicador { get; set; }
         public List<IndicadorEnergetic>? Indicadors { get; set; }
-        string filePath = "Files/indicadors_energetics_cat.json";
+        readonly string filePath = "Files/indicadors_energetics_cat.json";
 
         public void OnGet()
         {

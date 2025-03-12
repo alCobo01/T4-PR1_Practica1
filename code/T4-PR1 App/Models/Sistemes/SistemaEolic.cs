@@ -20,7 +20,7 @@ namespace T4PR1
             get { return _velocitatVent; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.EolicMinim);
+                if ((value <= _minim)) throw new ArgumentException(MissatgesSistemes.EolicMinim);
                 _velocitatVent = value;
             }
         }

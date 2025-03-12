@@ -2,17 +2,18 @@
 using CsvHelper;
 using System.Globalization;
 using T4_PR1_App.Models.ConsultesLINQ;
+using T4_PR1_App.Models;
 
 namespace T4_PR1_App.Pages
 {
     public class VeureIndicadorsModel : PageModel
     {
         public bool HasData { get; set; }
-        public List<IndicadorEnergetic> Indicadors { get; set; }
-        public List<IndicadorEnergetic> ProduccionsNetesGrans { get; set; }
-        public List<IndicadorEnergetic> ConsumsGasolinaGrans { get; set; }
-        public List<IndicadorEnergetic> ProduccionsMitjaPerAny { get; set; }
-        public List<IndicadorEnergetic> DemandesIproduccionsGrans { get; set; }
+        public List<IndicadorEnergetic>? Indicadors { get; set; }
+        public List<IndicadorEnergetic>? ProduccionsNetesGrans { get; set; }
+        public List<IndicadorEnergetic>? ConsumsGasolinaGrans { get; set; }
+        public List<IndicadorEnergetic>? ProduccionsMitjaPerAny { get; set; }
+        public List<IndicadorEnergetic>? DemandesIproduccionsGrans { get; set; }
 
         public void OnGet()
         {
