@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using T4_PR1_App.Models;
+using System.Text.Json;
 
 namespace T4_PR1_App.Pages
 {
@@ -24,7 +25,7 @@ namespace T4_PR1_App.Pages
                 if (System.IO.File.Exists(filePath))
                 {
                     string jsonFromFile = System.IO.File.ReadAllText(filePath);
-                    var deserializedIndicadors = System.Text.Json.JsonSerializer.Deserialize<List<IndicadorEnergetic>>(jsonFromFile);
+                    var deserializedIndicadors = JsonSerializer.Deserialize<List<IndicadorEnergetic>>(jsonFromFile);
                     Indicadors = deserializedIndicadors.ToList();
                 }
                 else
@@ -52,7 +53,7 @@ namespace T4_PR1_App.Pages
                 }
 
                 Indicadors.Add(Indicador);
-                var jsonResult = System.Text.Json.JsonSerializer.Serialize(Indicadors);
+                var jsonResult = JsonSerializer.Serialize(Indicadors, new JsonSerializerOptions { WriteIndented = true });
                 System.IO.File.WriteAllText(filePath, jsonResult);
 
                 return RedirectToPage("VeureIndicadors");

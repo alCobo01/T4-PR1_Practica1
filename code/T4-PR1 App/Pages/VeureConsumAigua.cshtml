@@ -5,12 +5,22 @@
 }
 
 <h2>Llistat de consums d'aigua</h2>
-
 <a asp-page="AfegirConsumAigua" class="btn btn-primary">Afegir consum d'aigua</a>
 
 @if (Model.HasData)
 {
-    <table class="table">
+    <!-- Selector per canviar entre taules i consultes LINQ -->
+    <label for="tableSelector">Selecciona una taula:</label>
+    <select id="tableSelector">
+        <option value="tots">Tots els consums</option>
+        <option value="mesConsum">Municipis més consumidors</option>
+        <option value="mitjaComarca">Consum mitjà per comarca</option>
+        <option value="sospitosos">Consums sospitosos</option>
+        <option value="creixent">Municipis amb tendència creixent</option>
+    </select>
+
+	<!-- Taula de tots els consums -->
+    <table class="table" id="table-tots">
         <thead>
             <tr>
                 <th>Any</th>
@@ -39,10 +49,61 @@
             }
         </tbody>
     </table>
+
+	<!-- Top 10 municipis consumidors -->
+    <div id="table-mesConsum" style="display: none;">
+        <h3>Top 10 municipis consumidors</h3>
+        <ul>
+            @foreach (var consum in Model.DeuMunicipisMesConsumidors)
+            {
+                <li>@consum.Poblacio - @consum.Total m³</li>
+            }
+        </ul>
+    </div>
+
+    <!-- Consum mitjà per comarca -->
+    <div id="table-mitjaComarca" style="display: none;">
+        <h3>Consum mitjà per comarca</h3>
+        <ul>
+            @foreach (var consum in Model.ConsumMitjaPerComarca)
+            {
+                <li>@consum.Comarca (@consum.CodiComarca) - @consum.Total m³</li>
+            }
+        </ul>
+    </div>
+
+    <!-- Consums sospitosos -->
+    <div id="table-sospitosos" style="display: none;">
+        <h3>Consums sospitosos (més de 999.999 m³)</h3>
+        <p></p>
+        <ul>
+            @foreach (var consum in Model.ConsumsSospitosos)
+            {
+
+                <li>@consum.Poblacio - @consum.Total m³</li>
+            }
+        </ul>
+    </div>
+
+    <!-- Municipis amb tendència creixent -->
+    <div id="table-creixent" style="display: none;">
+        <h3>Municipis amb tendència creixent</h3>
+        <ul>
+            @foreach (var municipi in Model.MunicipisAmbTendenciaCreixent)
+            {
+                <li>@municipi</li>
+            }
+        </ul>
+    </div>
+
 }
 else
 {
     <div class="alert alert-warning">
         <p>Encara no existeix cap consum d'aigua!</p>
     </div>
+}
+
+@section Scripts {
+    <script src="~/js/visibilitatAigua.js"></script>
 }

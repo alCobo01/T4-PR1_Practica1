@@ -1,9 +1,9 @@
 ﻿using CsvHelper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Globalization;
-using System.Xml;
 using System.Xml.Linq;
 using T4_PR1_App.Models;
+using T4_PR1_App.Models.ConsultesLINQ;
 
 namespace T4_PR1_App.Pages
 {
@@ -11,6 +11,11 @@ namespace T4_PR1_App.Pages
     {
         public bool HasData { get; set; }
         public List<ConsumAigua> Consums { get; set; }
+        public List<ConsumAigua> DeuMunicipisMesConsumidors { get; set; }
+        public List<ConsumAigua> ConsumMitjaPerComarca { get; set; }
+        public List<ConsumAigua> ConsumsSospitosos { get; set; }
+        public List<string> MunicipisAmbTendenciaCreixent { get; set; } 
+
         public void OnGet()
         {
             //Llegir dades del fitxer CSV
@@ -56,6 +61,12 @@ namespace T4_PR1_App.Pages
                 Consums.AddRange(nuevosConsumAigua);
                 
             }
+
+            //Consultes LINQ
+            DeuMunicipisMesConsumidors = ConsultesAigua.GetDeuMunicipisMesConsumidors(Consums);
+            ConsumMitjaPerComarca = ConsultesAigua.GetConsumMitjaPerComarca(Consums);
+            ConsumsSospitosos = ConsultesAigua.GetConsumsSospitosos(Consums);
+            MunicipisAmbTendenciaCreixent = ConsultesAigua.GetMunicipisAmbTendenciaCreixent(Consums);
         }
     }
 }
