@@ -5,31 +5,36 @@
 }
 
 <h2>Llistat d'indicadors energètics</h2>
-<a asp-page="AfegirIndicador" class="btn btn-primary">Afegir indicador energètic</a>
+<div>
+    <a asp-page="AfegirIndicador" class="btn btn-primary" style="margin-bottom: 20px;">Afegir indicador energètic</a>
+</div>
 
 @if (Model.HasData)
 {
-    <!-- Selector per canviar entre taules i consultes LINQ -->
-    <label for="tableSelector">Selecciona una taula:</label>
-    <select id="tableSelector">
-        <option value="tots">Tots els indicadors</option>
-        <option value="prodNeta">Indicadors amb producció neta més gran a 3000</option>
-        <option value="consumGas">Indicadors amb consum de gasolina més gran a 100</option>
-        <option value="prodMitja">Producció neta mitja per any</option>
-        <option value="demanda">Indicadors amb demanda elèctrica i producció disponible gran</option>
-    </select>
+    <div style="margin-bottom: 20px;">
+        <!-- Selector per canviar entre taules i consultes LINQ -->
+        <label for="tableSelector">Selecciona una taula:</label>
+        <select id="tableSelector" style="margin-left: 10px;">
+            <option value="tots">Tots els indicadors</option>
+            <option value="prodNeta">Indicadors amb producció neta més gran a 3000</option>
+            <option value="consumGas">Indicadors amb consum de gasolina més gran a 100</option>
+            <option value="prodMitja">Producció neta mitja per any</option>
+            <option value="demanda">Indicadors amb demanda elèctrica i producció disponible gran</option>
+        </select>
+    </div>
 
-    <div id="table-tots">
+    <div id="table-tots" style="margin-bottom: 20px;">
         <!-- Selector per escollir el tipus de taula quan es veuen totes les dades -->
         <!-- Això s'ha fet perquè si no, mostrar les 39 propietats en una mateixa taula és molt caos-->
         <label for="tableTotsSelector">Selecciona una taula:</label>
-        <select id="tableTotsSelector" onchange="changeTable()">
+        <select id="tableTotsSelector" onchange="changeTable()" style="margin-left: 10px;">
             <option value="pbee">Producció Bruta (PBEE)</option>
             <option value="cdeebc">Indicadors Elèctrics (CDEEBC)</option>
             <option value="fee">Factors Generals (FEE)</option>
             <option value="feei">Factors Industrials (FEEI)</option>
             <option value="combustibles">Combustibles i Consums (DGGN/CCAC)</option>
         </select>
+    </div>
 
         <!-- Taula de Producció Bruta (PBEE) -->
         <div id="pbeeTable" style="display:block;">
@@ -203,7 +208,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
 	<!-- Taula de Produccions Netes més grans a 3000 -->
     <div id="table-prodNeta" style="display: none;">
@@ -212,7 +216,7 @@
 			@foreach (var indicador in Model.ProduccionsNetesGrans)
 			{
 				<li>@indicador.Data - @indicador.CDEEBC_ProdNeta</li>
-			})
+			}
         </ul>
     </div>
 
@@ -223,7 +227,7 @@
             @foreach (var indicador in Model.ConsumsGasolinaGrans)
             {
                 <li>@indicador.Data - @indicador.CCAC_GasolinaAuto</li>
-            })
+            }
         </ul>
     </div>
 
@@ -234,7 +238,7 @@
             @foreach (var indicador in Model.ProduccionsMitjaPerAny)
             {
                 <li>@indicador.Data - @indicador.CDEEBC_ProdNeta</li>
-            })
+            }
         </ul>
 	</div>
 

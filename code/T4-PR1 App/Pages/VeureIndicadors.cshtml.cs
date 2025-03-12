@@ -20,7 +20,7 @@ namespace T4_PR1_App.Pages
             Indicadors = new List<IndicadorEnergetic>();
 
             // Llegir el fitxer CSV
-            string filePathCSV = "Files/indicadors_energetics_cat.csv";
+            string filePathCSV = Path.GetFullPath(@"Files/indicadors_energetics_cat.csv");
             try
             {
                 if (System.IO.File.Exists(filePathCSV))
@@ -39,8 +39,8 @@ namespace T4_PR1_App.Pages
                 Console.WriteLine(ex.Message);
                 HasData = false; }
 
-            // Llegir el fitxer CSV
-            string filePathJSON = "Files/indicadors_energetics_cat.json";
+            // Llegir el fitxer JSON
+            string filePathJSON = Path.GetFullPath(@"Files/indicadors_energetics_cat.json");
             try
             {
                 if (System.IO.File.Exists(filePathJSON))
