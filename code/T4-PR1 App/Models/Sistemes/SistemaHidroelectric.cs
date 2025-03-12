@@ -20,7 +20,7 @@ namespace T4PR1
             get { return _cabal; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.HidroelectricMinim);
+                if ((value <= _minim)) throw new ArgumentException(MissatgesSistemes.HidroelectricMinim);
                 _cabal = value;
             }
         }

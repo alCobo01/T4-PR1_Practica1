@@ -12,15 +12,15 @@ namespace T4_PR1_App.Models
 
         [Name("Codi comarca")]
         [Required(ErrorMessage = MissatgesAigua.RequiredCodiComarca)]
-        public string CodiComarca { get; set; }
+        public string? CodiComarca { get; set; }
 
         [Name("Comarca")]
         [Required(ErrorMessage = MissatgesAigua.RequiredComarca)]
-        public string Comarca { get; set; }
+        public string? Comarca { get; set; }
 
         [Name("Població")]
         [Required(ErrorMessage = MissatgesAigua.RequiredPoblacio)]
-        public string Poblacio { get; set; }
+        public string? Poblacio { get; set; }
 
         [Name("Domèstic xarxa")]
         [Required(ErrorMessage = MissatgesAigua.RequiredDomesticXarxa)]

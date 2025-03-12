@@ -20,7 +20,7 @@ namespace T4PR1
             get { return _horesSol; }
             set
             {
-                if (!(value >= _minim)) throw new ArgumentException(MissatgesSistemes.SolarMinim);
+                if ((value <= _minim)) throw new ArgumentException(MissatgesSistemes.SolarMinim);
                 _horesSol = value;
             }
         }

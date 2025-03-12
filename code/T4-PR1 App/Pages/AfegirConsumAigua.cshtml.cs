@@ -12,7 +12,7 @@ namespace T4_PR1_App.Pages
         [BindProperty]
         public ConsumAigua ConsumAigua { get; set; }
 
-        string filePath = "Files/consum_aigua_cat_per_comarques.xml";
+        readonly string filePath = "Files/consum_aigua_cat_per_comarques.xml";
 
         public void OnGet()
         {
